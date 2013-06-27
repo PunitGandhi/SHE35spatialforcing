@@ -123,7 +123,7 @@ u_t=-\frac{\delta F}{\delta u},
 \eeqn
 where the Lyapunov functional F has been slightly modified
 \beqn
-F=.
+F=\int -\frac{1}{2}r(1+\delta \cos\kappa x) u^2+\frac{1}{2}\left[(1+\partial_x^2) u\right]^2 -\frac{1}{4}bu^4+\frac{1}{6}u^6\; dx.
 \eeqn
 Therefore, we know that the system will still relax towards a steady state in time.  This motivates the study of time-independent solutions that will be pursued in following sections.
 
@@ -214,7 +214,7 @@ which,upon taking a derivate, gives
 \beqn
 \theta''=-\gamma \sin2\theta
 \eeqn
-On the other hand, Eq. \ref{eq:PolarGLEpf th} reduces to 
+On the other hand, Eq. \ref{eq:PolarGLEpfth} reduces to 
 \beqn
 \theta''=\gamma \sin2\theta
 \eeqn
@@ -269,7 +269,7 @@ The next thing to do might be to look for localized solutions by looking for par
 
 Another interesting thing to do might be to set up a time-stepping code for the SH35 with the periodic forcing and then see how one of these constant solutions that is stable for the amplitude equation evolves.  It might also be interesting to see how the trivial solution with some noise evolves in the parameter regime where it is unstable.  
 
-One other thing I'd be interested in, is to see what happens if the forcing is slightly off from the 2:1 resonance. However, I haven't thought enough about this to see if I know how to do this analysis.
+One other thing I'd be interested in, is to see what happens if the forcing is slightly off from the 2:1 resonance. 
     
 
 
