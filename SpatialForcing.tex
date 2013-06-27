@@ -70,7 +70,14 @@
 \newcommand{\FIGforce}{
 \begin{figure}[t]\center
 \includegraphics[width=60mm]{CowboyField.pdf}
-\caption{\label{fig:CowboyForce} A plot of the force corresponding to the term of the potential that breaks radial symmetry.  I think I forgot a minus sign in the force when making this graph, I need to check it.}
+\caption{\label{fig:CowboyForce} A plot of the force corresponding to the term of the potential that breaks radial symmetry.}
+\end{figure}
+}
+
+\newcommand{\FIGorbits}{
+\begin{figure}[t]\center
+\includegraphics[width=60mm]{CowboyOrbits.pdf}
+\caption{\label{fig:CowboyOrbits} A plot of the contours of $\bar{h}$ of Eq. \ref{eq:CowboyHat}. The darker color corresponds to lower energy.}
 \end{figure}
 }
 
@@ -211,9 +218,16 @@ On the other hand, Eq. \ref{eq:PolarGLEpf th} reduces to
 \beqn
 \theta''=\gamma \sin2\theta
 \eeqn
-after making the constant amplitude assumption.  The only way for both of these equations to be true, assuming a nonzero $\gamma$, is for $\sin2\theta=0$. This implies that $\theta=n\pi/2$ must be constant, where $n$ is some integer.  Plugging this value of $\theta$ back into Eq. \ref{eq:r0Polar1} gives the corresponding possible values of the amplitude, $r_0=\sqrt{\mu +(-1)^n\gamma}$. Note that we only consider positive values of $r$ since a negative value corresponds to a $\pi$ shift in $\theta$. These solutions will exist in the parameter regime where $\mu\pm\gamma\ge 0$
+after making the constant amplitude assumption.  The only way for both of these equations to be true, assuming a nonzero $\gamma$, is for $\sin2\theta=0$. This implies that $\theta=n\pi/2$ must be constant, where $n$ is some integer.  Plugging value this of $\theta$ back into Eq. \ref{eq:r0Polar1} gives the corresponding possible values of the amplitude, $r_0=\sqrt{\mu +(-1)^n\gamma}$. Note that we only consider positive values of $r$ since a negative value corresponds to a $\pi$ shift in $\theta$. These solutions will exist in the parameter regime where $\mu\pm\gamma\ge 0$.  These constant solutions are straightforward to find from the original amplitude equation (Eq. \ref{eq:LGEpf}).  It is not difficult to see that the solutions $A=\pm i \sqrt{\mu-\gamma}$ are stable in space when they exist (i.e. $\mu \geq \gamma$), and the solutions $A=\pm \sqrt{\mu+\gamma}$ are unstable in space when they exist (i.e. $\mu \geq-\gamma$).
 
-The solutions found here are constant in space and time, but we have already seen that there are no such solutions to the perturbed SH35 (Eq. \ref{eq:SH35spf}). These are not the droids you are looking for. 
+
+The solutions found here are constant in space and time for the amplitude, which correspond to periodic solutions to the perturbed SH35 (Eq. \ref{eq:SH35spf}). Explicitly, the leading order solutions are 
+\beqn
+u_1=\pm \frac{\sqrt{\mu-\gamma}}{2} \sin x,\: \pm \frac{\sqrt{\mu+\gamma}}{2} \cos x
+\eeqn
+{\it Should I go back and do this using the original amplitude equation I got from the perturbed SHE35 instead of the scaled version that is the CGLE?}
+The $\sin$ solutions are stable in space and the $\cos$ solutions are unstable in space, but we need to go back and look at their stability in time.
+
 
 
 \subsection{Time-independent solutions and spatial dynamics}
@@ -243,8 +257,22 @@ We can further simplify the energy equation by noting that the RHS is the spatia
 \eeqn
 so that the potential is no longer radially symmetric.  A plot of this potential, which will be referred to as the {\it cowboy hat potential}, is shown in Fig. \ref{fig:CowboyHat}.
 \FIGcowboy
-The force corresponding the additional energy term is $\mathbf{F}=-\gamma r (\cos2\theta \;\hat{r} - \sin2\theta \; \hat{\theta})$ is plotted in Fig. \ref{fig:CowboyForce}. 
+The force corresponding the additional energy term is $\mathbf{F}=-\gamma r (\cos2\theta \;\hat{r} - \sin2\theta \; \hat{\theta})$ is plotted in Fig. \ref{fig:CowboyForce}.    
 \FIGforce
+We can aslo plot contours of the modified energy (Eq. \ref{eq:CowboyHat}) to represent the orbits in the complex $A$ space. (Fig. \ref{fig:CowboyOrbits}).
+\FIGorbits
+
+\section{Future Work}
+All of this works seems very straightforward, so I assume it must have been done somewhere. I've found a few things on the parametrically forced Complex Ginzbur-Landau equation that are related, but I can't seem to find this in the literature.  I need to keep looking. 
+
+The next thing to do might be to look for localized solutions by looking for parameter regimes where it is possible for the orbit to approach 0 as $x \rightarrow \pm \infty$.  We would need to assume $l=0$ for this to be possible.
+
+Another interesting thing to do might be to set up a time-stepping code for the SH35 with the periodic forcing and then see how one of these constant solutions that is stable for the amplitude equation evolves.  It might also be interesting to see how the trivial solution with some noise evolves in the parameter regime where it is unstable.  
+
+One other thing I'd be interested in, is to see what happens if the forcing is slightly off from the 2:1 resonance. However, I haven't thought enough about this to see if I know how to do this analysis.
+    
+
+
 
 \bibliography{SpatialForcingBib}
 \end{document}
