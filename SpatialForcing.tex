@@ -59,6 +59,22 @@
 %\cfoot{}
 %\rfoot{}
 
+
+%Figures
+\newcommand{\FIGcowboy}{
+\begin{figure}[t]\center
+\includegraphics[width=60mm]{CowboyHatPotential.pdf}
+\caption{\label{fig:CowboyHat} A plot of the cowboy hat potential with $l=0.005$, $\mu=1.0$, and $\gamma=0.5$.}
+\end{figure}
+}
+\newcommand{\FIGforce}{
+\begin{figure}[t]\center
+\includegraphics[width=60mm]{CowboyField.pdf}
+\caption{\label{fig:CowboyForce} A plot of the force corresponding to the term of the potential that breaks radial symmetry.  I think I forgot a minus sign in the force when making this graph, I need to check it.}
+\end{figure}
+}
+
+
 \pagestyle{fancy}
 \begin{document}
 \preprint{APS/123-QED}
@@ -82,7 +98,7 @@ The Swift-Hohenberg equation serves as a model for pattern formation in a broad 
 \begin{equation}
 u_t= r u-\left(1+\partial_{x}^2\right)^2u+bu^3-u^5\label{eq:SH35},
 \end{equation}
-describes the dynamics of a real field $u$ over one spatial dimension in time.  We have rescaled the equation so that the critical wavenumber that defines the natural wavelength of the patterned state is unity. The strength of the linear forcing term $r$ and the strength of the quadratic nonlinearity $b$ are left as parameters of the system.  {\it (Some more details about work that has already been done on this equation)} 
+describes the dynamics of a real field $u$ over one spatial dimension in time.  We have rescaled the equation, which will be referred to as SH35, so that the critical wavenumber that defines the natural wavelength of the patterned state is unity. The strength of the linear forcing term $r$ and the strength of the quadratic nonlinearity $b$ are left as parameters of the system.  {\it (Some more details about work that has already been done on this equation)} 
 
 
 Realistic systems will not always have a perfectly homogeneous forcing in space, and inhomogeneities may even lead to a way to manipulate dynamics of localized states. As a simple extension to Eq. \ref{eq:SH35}, we would now like to consider the case when the forcing has a periodic perturbation,
@@ -91,6 +107,21 @@ u_t= r(1+\delta \cos{\kappa x}) u -\left(1+\partial_{x}^2\right)^2u+bu^3-u^5\lab
 \end{equation}
 
 We can make some analytic progress on studying Eq.~\ref{eq:SH35spf} using techniques very similar to those used on the original equation (Eq.~\ref{eq:SH35}). We will look near the $r=0$ bifurcation point on a long timescale and a long spatial scale to get an amplitude equation at leading order.  In the special case that the periodicity of the forcing is half that of the natural wavelength, we obtain a parametrically forced Ginsburg-Landau equation for the amplitude.  
+
+
+\section{Preliminary Analysis}
+The addition of the periodic forcing perturbation does not destroy the variational structure of Eq. \ref{eq:SH35}.  Indeed, Eq. \ref{eq:SH35spf} can still be written in terms of a Lyapunov functional as 
+\beqn
+u_t=-\frac{\delta F}{\delta u},
+\eeqn
+where the Lyapunov functional F has been slightly modified
+\beqn
+F=.
+\eeqn
+Therefore, we know that the system will still relax towards a steady state in time.  This motivates the study of time-independent solutions that will be pursued in following sections.
+
+The trivial solution $u=0$ also still exists for the perturbed system (Eq. \ref{eq:SH35spf}). There can no longer be nonzero constant solutions as there were for certain parameter regimes of the original SH35.  To see this, we need only assume a constant solution for $u$ and we will run into  a contradiction when the constant is not zero (assume $\delta$ is nonzero).  
+
 
 \section{Scaling}
 We would like to look at small amplitude solutions in the neighborhood of the $r=0$ bifurcation where the periodic state branches off of the homogeneous state in the space of steady-state solutions.  We will take a multi-scale approach, defining a slow timescale $T=\epsilon^2t$, and long spatial scale $X=\epsilon x$ so that the derivatives become $\partial_t \rightarrow \partial_t+\epsilon^2\partial_T$ and $\partial_x \rightarrow \partial_x+\epsilon\partial_X$.  We will assume that the system will not change on the fast timescale, so we can neglect the $\partial_t$ term. With some trial and error, it can be seen that the appropriate scaling of forcing strength to probe the dynamics we are interested in will be $r=\epsilon^2 \mu$.     Additionally, we will not make any assumptions about $\delta$ yet, but will eventually want to consider the case that $\epsilon <<\delta <<1$.
@@ -166,12 +197,32 @@ r^2\dot{\theta}&=2 r r' \theta'+r^2\theta''-\gamma r^2 \sin 2\theta
 \end{subequations}
 where the dot and prime represent derivatives with respect to the time $T$ and the position $X$, respectively.
 
+\subsection{Constant amplitude solutions}
+The original SH35 has periodic solutions that are time-independent and have a constant amplitude in space.  We can try to look for similar solutions to this case by assuming $r=r_0$ is a nonzero constant. Substituting this into Eq. \ref{eq:PolarGLEpfr} leads to
+\beqn
+\theta'^2=\mu-r_0^2+\gamma \cos2\theta
+\label{eq:r0Polar1}
+\eeqn
+which,upon taking a derivate, gives
+\beqn
+\theta''=-\gamma \sin2\theta
+\eeqn
+On the other hand, Eq. \ref{eq:PolarGLEpf th} reduces to 
+\beqn
+\theta''=\gamma \sin2\theta
+\eeqn
+after making the constant amplitude assumption.  The only way for both of these equations to be true, assuming a nonzero $\gamma$, is for $\sin2\theta=0$. This implies that $\theta=n\pi/2$ must be constant, where $n$ is some integer.  Plugging this value of $\theta$ back into Eq. \ref{eq:r0Polar1} gives the corresponding possible values of the amplitude, $r_0=\sqrt{\mu +(-1)^n\gamma}$. Note that we only consider positive values of $r$ since a negative value corresponds to a $\pi$ shift in $\theta$. These solutions will exist in the parameter regime where $\mu\pm\gamma\ge 0$
+
+The solutions found here are constant in space and time, but we have already seen that there are no such solutions to the perturbed SH35 (Eq. \ref{eq:SH35spf}). These are not the droids you are looking for. 
+
+
+\subsection{Time-independent solutions and spatial dynamics}
 If we look for steady state solutions in time, we can reduce this problem to an ode with the dependent variable as space instead of time.  We can define a spatial {\it energy} $h$ and {\it angular momentum} $l$ by:
 \begin{eqnarray}
 l &=& r^2\theta' \\
 h &=& \frac{1}{2} r'^2 +\frac{l^2}{2r^2} +\frac{1}{2}\mu r^2 -\frac{1}{4} r^4
 \end{eqnarray}
-In the limit that $\gamma$ vanishes, these new variables are actually constants of motion of the amplitude Eq. \ref{eq:LGEpf}.  The problem described by Eq. \eqref{eq:PolarGLEpfr} and \eqref{eq:PolarGLEpfth} can be mapped onto the problem of a particle traveling in a central potential equivilent to a particle in a central potential if we consider dynamics in space instead of time.  The spatial energy $h$ has a kinetic term, a effective potential term from the spatial angular momentum $l$, and a central potental well term.  Equations \eqref{eq:PolarGLEpfr} and \eqref{eq:PolarGLEpfth} can now be rewritten in terms of the spatial energy and angular momentum as:
+In the limit that $\gamma$ vanishes, these new variables are actually constants of motion of the amplitude Eq. \ref{eq:LGEpf}.  The problem described by Eq. \eqref{eq:PolarGLEpfr} and \eqref{eq:PolarGLEpfth} can be mapped onto the problem of a particle traveling in a central potential equivalent to a particle in a central potential if we consider dynamics in space instead of time.  The spatial energy $h$ has a kinetic term, a effective potential term from the spatial angular momentum $l$, and a central potential well term.  Equations \eqref{eq:PolarGLEpfr} and \eqref{eq:PolarGLEpfth} can now be rewritten in terms of the spatial energy and angular momentum as:
 \begin{subequations}
 \begin{align}
 l' &= \gamma r^2 \sin 2\theta 
@@ -188,8 +239,12 @@ We can use the interpretation of a particle in a central potential to help us fi
 We can further simplify the energy equation by noting that the RHS is the spatial derivative of the quantity $-\half \gamma r^2 \cos 2 \theta$. By redefining the energy as
 \beqn
 \bar{h}=\frac{1}{2} r'^2 +\frac{l^2}{2r^2} +\frac{1}{2}\mu r^2 -\frac{1}{4} r^4+\half \gamma r^2 \cos 2 \theta,
+\label{eq:CowboyHat}
 \eeqn
-so that the problem becomes a particle in a central potential with a periodic perturbation.
+so that the potential is no longer radially symmetric.  A plot of this potential, which will be referred to as the {\it cowboy hat potential}, is shown in Fig. \ref{fig:CowboyHat}.
+\FIGcowboy
+The force corresponding the additional energy term is $\mathbf{F}=-\gamma r (\cos2\theta \;\hat{r} - \sin2\theta \; \hat{\theta})$ is plotted in Fig. \ref{fig:CowboyForce}. 
+\FIGforce
 
 \bibliography{SpatialForcingBib}
 \end{document}
