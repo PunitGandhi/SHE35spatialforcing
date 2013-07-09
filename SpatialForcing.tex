@@ -63,22 +63,52 @@
 %Figures
 \newcommand{\FIGcowboy}{
 \begin{figure}[t]\center
-\includegraphics[width=60mm]{CowboyHatPotential.pdf}
+\includegraphics[width=60mm]{CowboyHatPotential.png}
 \caption{\label{fig:CowboyHat} A plot of the cowboy hat potential with $l=0.005$, $\mu=1.0$, and $\gamma=0.5$.}
 \end{figure}
 }
 \newcommand{\FIGforce}{
 \begin{figure}[t]\center
-\includegraphics[width=60mm]{CowboyField.pdf}
+\includegraphics[width=60mm]{CowboyField.png}
 \caption{\label{fig:CowboyForce} A plot of the force corresponding to the term of the potential that breaks radial symmetry.}
 \end{figure}
 }
 
-\newcommand{\FIGorbits}{
+\newcommand{\FIGpotcont}{
 \begin{figure}[t]\center
-\includegraphics[width=60mm]{CowboyOrbits.pdf}
-\caption{\label{fig:CowboyOrbits} A plot of the contours of $\bar{h}$ of Eq. \ref{eq:CowboyHat}. The darker color corresponds to lower energy.}
+\includegraphics[width=60mm]{CowboyPotCont.png}
+\caption{\label{fig:CowboyCont} A plot of the contours of the potential of $\bar{h}$ of Eq. \ref{eq:CowboyHat}. The darker color corresponds to lower energy.}
 \end{figure}
+}
+\newcommand{\FIGpotcontL}{
+\begin{figure}[t]\center
+\includegraphics[width=60mm]{PotContL0.png}
+\caption{\label{fig:PotContL0} A plot of the contours of the potential of $\bar{h}$ of Eq. \ref{eq:CowboyHat} in the case of zero angular momentum. The darker color corresponds to lower energy.}
+\end{figure}
+}
+
+\newcommand{\FIGsnakeknot}{
+\begin{figure}[htp]
+  \centering
+\caption{  \label{fig:snakeknot} bifurcation diagrams with the L2 norm vs forcing strength (r) for different strengths of periodic forcing perturbation.}
+
+  \subfloat[$\delta=0.00$]{\label{fig:snakeknot:1}\includegraphics[width=60mm]{sb00.png}}
+  \subfloat[$\delta=0.02$]{\label{fig:snakeknot:2}\includegraphics[width=60mm]{sb02.png}}
+  \\
+  \subfloat[$\delta=0.04$]{\label{fig:snakeknot:3}\includegraphics[width=60mm]{sb04.png}}
+  \subfloat[$\delta=0.06$]{\label{fig:snakeknot:4}\includegraphics[width=60mm]{sb06.png}}
+\end{figure}
+}
+
+\newcommand{\FIGsnakecollapse}{
+\begin{figure}[htp]
+  \centering
+\caption{  \label{fig:snakecollapse} bifurcation diagrams with the L2 norm vs forcing strength (r) for different strengths of periodic forcing perturbation.}
+
+  \subfloat[$\delta=0.12$]{\label{fig:snakeknot:1}\includegraphics[width=60mm]{sb12.png}}
+  \subfloat[$\delta=0.14$]{\label{fig:snakeknot:2}\includegraphics[width=60mm]{sb14.png}}
+  \subfloat[$\delta=0.16$]{\label{fig:snakeknot:3}\includegraphics[width=60mm]{sb16.png}}
+ \end{figure}
 }
 
 
@@ -105,7 +135,7 @@ The Swift-Hohenberg equation serves as a model for pattern formation in a broad 
 \begin{equation}
 u_t= r u-\left(1+\partial_{x}^2\right)^2u+bu^3-u^5\label{eq:SH35},
 \end{equation}
-describes the dynamics of a real field $u$ over one spatial dimension in time.  We have rescaled the equation, which will be referred to as SH35, so that the critical wavenumber that defines the natural wavelength of the patterned state is unity. The strength of the linear forcing term $r$ and the strength of the quadratic nonlinearity $b$ are left as parameters of the system.  {\it (Some more details about work that has already been done on this equation)} 
+describes the dynamics of a real field $u$ over one spatial dimension in time.  We have rescaled the equation, which will be referred to as SH35, so that the critical wavenumber that defines the natural wavelength of the patterned state is unity. The strength of the linear forcing term $r$ and the strength of the cubic nonlinearity $b$ are left as parameters of the system.  {\it (Some more details about work that has already been done on this equation)} 
 
 
 Realistic systems will not always have a perfectly homogeneous forcing in space, and inhomogeneities may even lead to a way to manipulate dynamics of localized states. As a simple extension to Eq. \ref{eq:SH35}, we would now like to consider the case when the forcing has a periodic perturbation,
@@ -176,7 +206,12 @@ Plugging in the form of the solution for $u_1$ from Eq. \ref{eq:u1sol} gives the
 & & +bA^3e^{3ix}+b\bar{A}^3e^{-3ix}
 \label{eq:RHSeps3}
 \end{eqnarray}
-The resonant terms of in the above expression (Eq. \ref{eq:RHSeps3}) must vanish in order for this equation to be solved, giving the desired equation that determines the complex amplitude $A$.  The choice of $\kappa$ determines if the effects of the spatially periodic forcing perturbation can be seen at this order.  In particular, the choice of $\kappa=2$, modifies the complex amplitude equation so that it includes a parametric forcing term (proportional to $\bar{A}$).
+The resonant terms of in the above expression (Eq. \ref{eq:RHSeps3}) must vanish in order for this equation to be solved, giving the desired equation that determines the complex amplitude $A$.  The equation that results from this solvability equation is
+\begin{equation}
+A_T= 4 A_{XX}+\mu\left(1+\delta \tfrac{\sin\kappa \pi}{\kappa\pi}\right) A + 3b |A|^2 A+\mu\delta\tfrac{\kappa^2}{\kappa^2-4}\tfrac{\sin\kappa\pi}{\kappa\pi}\bar{A}
+\label{eq:Aeq}
+\end{equation}
+The choice of $\kappa$ determines if the effects of the spatially periodic forcing perturbation can be seen at this order.  In particular, there is no effect from the periodic forcing perturbation at this order when $\kappa$ is a positive integer other than 2.  The choice of $\kappa=2$ on the other hand, modifies the complex amplitude equation at this order so that it includes a parametric forcing term (proportional to $\bar{A}$).  We could also consider the case of rational fraction values of $\kappa$, which would generically also have a parametric forcing term added.  This would correspond to forcing perturbations with wavelength longer than the characteristic wavelength of the pattern.   
 
 \section{The 2:1 resonance in the forcing}
 We will now focus on the case that the period of the forcing perturbation is half that of the characteristic wavelength of the patterned state, namely that $\kappa=2$.  Plugging this into Eq. \ref{eq:AsympExpEps3} leads to the following equation for the complex amplitude from the solvability condition that resonant terms vanish:
@@ -225,7 +260,7 @@ The solutions found here are constant in space and time for the amplitude, which
 \beqn
 u_1=\pm \frac{\sqrt{\mu-\gamma}}{2} \sin x,\: \pm \frac{\sqrt{\mu+\gamma}}{2} \cos x
 \eeqn
-{\it Should I go back and do this using the original amplitude equation I got from the perturbed SHE35 instead of the scaled version that is the CGLE?}
+{\it Should I go back and do this using the original amplitude equation I got from the perturbed SHE35 instead of the scaled version that is the GLE?}
 The $\sin$ solutions are stable in space and the $\cos$ solutions are unstable in space, but we need to go back and look at their stability in time.
 
 
@@ -259,11 +294,27 @@ so that the potential is no longer radially symmetric.  A plot of this potential
 \FIGcowboy
 The force corresponding the additional energy term is $\mathbf{F}=-\gamma r (\cos2\theta \;\hat{r} - \sin2\theta \; \hat{\theta})$ is plotted in Fig. \ref{fig:CowboyForce}.    
 \FIGforce
-We can aslo plot contours of the modified energy (Eq. \ref{eq:CowboyHat}) to represent the orbits in the complex $A$ space. (Fig. \ref{fig:CowboyOrbits}).
-\FIGorbits
+We can aslo plot contours of the modified potential energy (Eq. \ref{eq:CowboyHat}) to help us visualize what  the orbits in the complex $A$ space might look like. (Fig. \ref{fig:CowboyCont}).
+\FIGpotcont
+
+\subsection{Localized states}
+We can search for states that are localized in space by searching for the equivalent orbits in the particle in potential picture described above.   In this interpretation, the localized states correspond to orbits that approach $r=0$ as $x\rightarrow \pm \infty$.  Such an orbit is only possible when $l=0$ so that the value of the potential at $r=0$ does not blow up.  In this case, $\theta$ must be constant and we are looking for orbits that just move radially.  The a contour plot of the potential of $\bar{h}$  when $l=0$,  $\mu=-0.2$, and $\gamma=0.5$ is shown in Fig. \ref{fig:PotContL0}.  
+\FIGpotcontL
+It is clear that the only possible way for the orbit we are searching for is when $\theta=\pm \pi/2$, and in this case the particle would have $\bar{h}=0$.  With the parameter values $\mu=-0.2$ and $\gamma=0.5$, the maximum amplitude for the localized state can be found numerically to be $r\approx 1.2$.
+
+\section{Numerical Work}
+Numerical Continuation can be used to follow solutions that are steady in time over a range of parameters.  We will focus on such bifurcation diagrams that vary the forcing parameter $r$, and will use the $L2$ norm as a way to characterize the solutions so that they can be plotted.  We can make a series of these diagrams as for different values of strength of the spatially periodic perturbation $\delta$.
+
+
+There are two interesting features of the series of plots described above, which we would like to understand.  Firstly,  Fig. \ref{fig:snakeknot} shows that two distinct sections of the snaking region develop as the perturbation is increased from $\delta=0.00$ to $\delta=0.06$.  The upper region of the snaking branch is shifted to the right, and this shift grows as the perturbation increases.  Furthermore, we see the upper section takes over more and more of the lower section as the perturbation increases.  We also notice that there is initially a knot separating these two regions, but eventually gets pulled out.  Finally, it is interesting to note that the lower section corresponds to localized patterns of the characteristic wavelength will the upper section has localized structures with a longer wavelength. One other peculiar feature is seen in Fig. \ref{fig:snakeknot:2} when $\delta=0.02$.  The top section of the snaking branch, which consists of solutions of longer wavelength, eventually reconnects with the periodic branch of characteristic wavelength.
+\FIGsnakeknot
+
+As the two sections continue to separate from each other,  the top section starts to unfold into two separate snaking branches and then eventually collapses so that there is only a lower section of snaking.  This happens between the ranges of $\delta=0.12$ and $\delta=.16$.
+\FIGsnakecollapse
+
 
 \section{Future Work}
-All of this works seems very straightforward, so I assume it must have been done somewhere. I've found a few things on the parametrically forced Complex Ginzbur-Landau equation that are related, but I can't seem to find this in the literature.  I need to keep looking. 
+All of this works seems very straightforward, so I assume it must have been done somewhere. I've found a few things on the parametrically forced  Ginzburg-Landau equation that are related, but I can't seem to find this in the literature.  I need to keep looking. 
 
 The next thing to do might be to look for localized solutions by looking for parameter regimes where it is possible for the orbit to approach 0 as $x \rightarrow \pm \infty$.  We would need to assume $l=0$ for this to be possible.
 
